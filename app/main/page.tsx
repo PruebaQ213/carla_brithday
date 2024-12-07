@@ -15,7 +15,7 @@ export default function Main() {
   const [loading, setLoading] = useState(true);
   const [selectedAgent, setAgent] = useState("");
 
-  const handleClick = (agentUuid) => {
+  const handleClick = (agentUuid : string) => {
     setAgent(agentUuid); // Set the selected agent's UUID
   }
 
