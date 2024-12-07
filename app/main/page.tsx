@@ -10,12 +10,12 @@ type Agent = {
 };
 
 export default function Main() {
-  const [agents, setAgents] = useState([]);
-  const [agentDictionary, setAgentDictionary] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [selectedAgent, setAgent] = useState("");
+  const [agents, setAgents] = useState<Agent[]>([]);
+  const [agentDictionary, setAgentDictionary] = useState<Record<string, { img: string; name: string }>>({});
+  const [loading, setLoading] = useState<boolean>(true);
+  const [selectedAgent, setAgent] = useState<string>("");
 
-  const handleClick = (agentUuid : string) => {
+  const handleClick = (agentUuid: string) => {
     setAgent(agentUuid); // Set the selected agent's UUID
   }
 
@@ -42,8 +42,6 @@ export default function Main() {
         setLoading(false); // Ensure loading is false even on error
       });
   }, []); // Empty dependency array means this effect runs once on mount
-
-
 
   return (
     <>
@@ -75,8 +73,8 @@ export default function Main() {
         <button 
           className="scale-150 bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-red-700 transition duration-300 mb-5"
           onClick={() => {
-            localStorage.setItem('selectedAgentImg', agentDictionary[selectedAgent]?.img);
-            localStorage.setItem('selectedAgentName', agentDictionary[selectedAgent]?.name); 
+            localStorage.setItem('selectedAgentImg', agentDictionary[selectedAgent]?.img || '');
+            localStorage.setItem('selectedAgentName', agentDictionary[selectedAgent]?.name || '');
           }}
         >
           LOCK IN
