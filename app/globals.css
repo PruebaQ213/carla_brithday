@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
   --background: #ffffff;
@@ -9,7 +10,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #833f7b;
     --foreground: #ededed;
   }
 }
@@ -17,5 +18,59 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: bold;
+}
+
+.text-container{
+  overflow: hidden;
+  max-height: 100px;
+  transition: all 0.3s ease;
+}
+
+.text-container.expanded{
+  height: 100vh;
+}
+
+#click-text{
+  transform: scale(1);
+  animation: scale 2s ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes limitless {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+#start{
+  background-color: rgba(244, 114, 181, 0.727)
+}
+
+#click-text{
+  background-color: rgba(244, 114, 181, 0.727);
+}
+
+#btnStart{
+  animation: limitless 2.5s infinite ease-in-out;
+}
+
+#agent{
+  width: 256px;
 }
